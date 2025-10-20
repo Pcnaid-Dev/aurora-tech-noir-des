@@ -12,7 +12,9 @@ import "./styles/theme.css"
 import "./index.css"
 
 createRoot(document.getElementById('root')!).render(
-  <ErrorBoundary FallbackComponent={ErrorFallback}>
-    <App />
-   </ErrorBoundary>
+  <React.StrictMode>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <App />
+    </ErrorBoundary>
+  </React.StrictMode>
 )
