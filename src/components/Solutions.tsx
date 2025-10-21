@@ -1,17 +1,10 @@
-import { useState, useEffect } from 'react'
 import { 
   CreditCard, 
   Lightning, 
   Phone,
   ChartBar,
   Calculator,
-  Strategy,
-  Storefront,
-  Cloud,
-  CaretLeft,
-  CaretRight,
-  Pause,
-  Play
+  Strategy
 } from '@phosphor-icons/react'
 
 const solutions = [
@@ -56,51 +49,16 @@ const solutions = [
     description: 'Business strategy consulting and formation services to accelerate growth and operational excellence.',
     features: ['Strategic planning', 'Business formation', 'Growth acceleration', 'Operational excellence'],
     color: 'var(--brand-300)'
-  },
-  {
-    icon: Cloud,
-    title: 'Cloud Infrastructure',
-    description: 'Scalable cloud architecture and migration services for modern, resilient operations.',
-    features: ['Cloud migration', 'Scalable architecture', 'High availability', 'Cost optimization'],
-    color: 'var(--aurora-cyan)'
-  },
-  {
-    icon: Storefront,
-    title: 'E-commerce Solutions',
-    description: 'Complete online retail platforms with integrated payments, inventory, and analytics.',
-    features: ['Payment integration', 'Inventory management', 'Analytics dashboard', 'Mobile-first design'],
-    color: 'var(--aurora-violet)'
   }
 ]
 
 export function Solutions() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [isAutoPlay, setIsAutoPlay] = useState(true)
-
-  useEffect(() => {
-    if (!isAutoPlay) return
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % solutions.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [isAutoPlay])
-
-  const goToNext = () => {
-    setActiveIndex((prev) => (prev + 1) % solutions.length)
-  }
-
-  const goToPrev = () => {
-    setActiveIndex((prev) => (prev - 1 + solutions.length) % solutions.length)
-  }
-
-  const activeSolution = solutions[activeIndex]
-
   return (
     <section id="solutions" className="relative py-24 px-4">
       <div className="relative z-10 container mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Solutions Overview</span>
+            <span className="gradient-text">Comprehensive Solutions</span>
           </h2>
           <p className="text-lg text-[var(--text-60)] max-w-2xl mx-auto">
             Enterprise-grade technology services designed to transform your business operations 
@@ -108,158 +66,52 @@ export function Solutions() {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto mb-12">
-          <div className="glass-panel rounded-2xl p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-4 right-4 flex gap-2 z-20">
-              <button
-                onClick={() => setIsAutoPlay(!isAutoPlay)}
-                className="w-10 h-10 rounded-lg flex items-center justify-center glass-panel hover:bg-white/10 transition-all"
-                aria-label={isAutoPlay ? 'Pause autoplay' : 'Play autoplay'}
-              >
-                {isAutoPlay ? (
-                  <Pause size={18} weight="fill" className="text-white" />
-                ) : (
-                  <Play size={18} weight="fill" className="text-white" />
-                )}
-              </button>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-6">
-                <div 
-                  className="w-20 h-20 rounded-2xl flex items-center justify-center"
-                  style={{
-                    background: `linear-gradient(135deg, ${activeSolution.color}30, ${activeSolution.color}10)`,
-                    boxShadow: `0 0 40px ${activeSolution.color}60`
-                  }}
-                >
-                  <activeSolution.icon size={40} weight="duotone" style={{ color: activeSolution.color }} />
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-4">
-                    {activeSolution.title}
-                  </h3>
-                  <p className="text-[var(--text-60)] leading-relaxed">
-                    {activeSolution.description}
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  {activeSolution.features.map((feature, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-2 text-sm"
-                    >
-                      <div 
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{ backgroundColor: activeSolution.color }}
-                      />
-                      <span className="text-white/80">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <button 
-                  className="px-6 py-3 rounded-lg font-medium flex items-center gap-2 group/btn transition-all hover:gap-3"
-                  style={{ 
-                    background: `linear-gradient(135deg, ${activeSolution.color}40, ${activeSolution.color}20)`,
-                    color: activeSolution.color,
-                    border: `1px solid ${activeSolution.color}30`
-                  }}
-                >
-                  Explore Solution
-                  <span className="transform transition-transform">→</span>
-                </button>
-              </div>
-
-              <div className="hidden md:block relative h-80">
-                <div 
-                  className="absolute inset-0 rounded-2xl opacity-20"
-                  style={{
-                    background: `radial-gradient(circle at center, ${activeSolution.color}, transparent 70%)`
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="absolute left-4 top-1/2 -translate-y-1/2">
-              <button
-                onClick={goToPrev}
-                className="w-12 h-12 rounded-full flex items-center justify-center glass-panel hover:bg-white/10 transition-all"
-                aria-label="Previous solution"
-              >
-                <CaretLeft size={24} weight="bold" className="text-white" />
-              </button>
-            </div>
-
-            <div className="absolute right-4 top-1/2 -translate-y-1/2">
-              <button
-                onClick={goToNext}
-                className="w-12 h-12 rounded-full flex items-center justify-center glass-panel hover:bg-white/10 transition-all"
-                aria-label="Next solution"
-              >
-                <CaretRight size={24} weight="bold" className="text-white" />
-              </button>
-            </div>
-          </div>
-
-          <div className="flex justify-center gap-2 mt-6">
-            {solutions.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className="relative h-2 rounded-full transition-all overflow-hidden"
-                style={{ 
-                  width: index === activeIndex ? '40px' : '20px',
-                  backgroundColor: index === activeIndex ? activeSolution.color : 'rgba(255, 255, 255, 0.2)'
-                }}
-                aria-label={`Go to solution ${index + 1}`}
-              >
-                {index === activeIndex && isAutoPlay && (
-                  <div 
-                    className="absolute inset-0 origin-left animate-[progress_5s_linear]"
-                    style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
-                  />
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {solutions.map((solution, index) => {
             const Icon = solution.icon
             return (
-              <button
+              <div
                 key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`glass-panel rounded-xl p-4 transition-all ${
-                  index === activeIndex 
-                    ? 'ring-2' 
-                    : 'hover:bg-white/5'
-                }`}
-                style={{
-                  ringColor: index === activeIndex ? solution.color : 'transparent',
-                  boxShadow: index === activeIndex 
-                    ? `inset 0 1px 0 0 var(--glass-inner), 0 0 30px 0 ${solution.color}40`
-                    : `inset 0 1px 0 0 var(--glass-inner), 0 0 20px 0 ${solution.color}20`
-                }}
+                className="glass-panel glass-panel-hover rounded-2xl p-8 group cursor-pointer"
               >
                 <div 
-                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 mx-auto"
+                  className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110"
                   style={{
-                    background: `linear-gradient(135deg, ${solution.color}25, ${solution.color}10)`,
-                    boxShadow: `0 0 20px ${solution.color}40`
+                    background: `linear-gradient(135deg, ${solution.color}30, ${solution.color}10)`,
+                    boxShadow: `0 0 30px ${solution.color}40`
                   }}
                 >
-                  <Icon size={20} weight="duotone" style={{ color: solution.color }} />
+                  <Icon size={32} weight="duotone" style={{ color: solution.color }} />
                 </div>
 
-                <h3 className="text-sm font-bold text-white text-center">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   {solution.title}
                 </h3>
-              </button>
+                
+                <p className="text-[var(--text-60)] mb-6 leading-relaxed">
+                  {solution.description}
+                </p>
+
+                <ul className="space-y-3 mb-6">
+                  {solution.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-3 text-sm">
+                      <div 
+                        className="w-1.5 h-1.5 rounded-full"
+                        style={{ backgroundColor: solution.color }}
+                      />
+                      <span className="text-white/80">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button 
+                  className="text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all"
+                  style={{ color: solution.color }}
+                >
+                  Learn More
+                  <span className="transform transition-transform">→</span>
+                </button>
+              </div>
             )
           })}
         </div>
