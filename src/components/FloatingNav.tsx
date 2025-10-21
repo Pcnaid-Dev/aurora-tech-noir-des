@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
+import logoIcon from '@/assets/images/base_icon_transparent_background_(1).png'
 
 const navItems = [
   { id: 'hero', label: 'Home' },
@@ -60,9 +61,7 @@ export function FloatingNav() {
           'flex items-center justify-between'
         )}>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--brand)] to-[var(--aurora-violet)] flex items-center justify-center font-bold text-white">
-              P
-            </div>
+            <img src={logoIcon} alt="Pcnaid Logo" className="w-8 h-8 object-contain" />
             <span className="font-bold text-lg">Pcnaid</span>
           </div>
 

@@ -6,6 +6,7 @@ import {
   FacebookLogo,
   YoutubeLogo
 } from '@phosphor-icons/react'
+import logoIcon from '@/assets/images/base_icon_transparent_background_(1).png'
 
 const footerLinks = {
   solutions: [
@@ -40,12 +41,12 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { icon: GithubLogo, href: '#', label: 'GitHub' },
-  { icon: TwitterLogo, href: '#', label: 'Twitter' },
-  { icon: LinkedinLogo, href: '#', label: 'LinkedIn' },
-  { icon: InstagramLogo, href: '#', label: 'Instagram' },
-  { icon: FacebookLogo, href: '#', label: 'Facebook' },
-  { icon: YoutubeLogo, href: '#', label: 'YouTube' }
+  { icon: GithubLogo, href: '#', label: 'GitHub', color: '#333' },
+  { icon: TwitterLogo, href: '#', label: 'Twitter', color: '#1DA1F2' },
+  { icon: LinkedinLogo, href: '#', label: 'LinkedIn', color: '#0A66C2' },
+  { icon: InstagramLogo, href: '#', label: 'Instagram', color: '#E4405F' },
+  { icon: FacebookLogo, href: '#', label: 'Facebook', color: '#1877F2' },
+  { icon: YoutubeLogo, href: '#', label: 'YouTube', color: '#FF0000' }
 ]
 
 export function Footer() {
@@ -55,9 +56,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--brand)] to-[var(--aurora-violet)] flex items-center justify-center font-bold text-white text-xl">
-                P
-              </div>
+              <img src={logoIcon} alt="Pcnaid Logo" className="w-10 h-10 object-contain" />
               <span className="font-bold text-xl">Pcnaid</span>
             </div>
             <p className="text-[var(--text-60)] text-sm leading-relaxed mb-6">
@@ -71,9 +70,9 @@ export function Footer() {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-lg glass-panel flex items-center justify-center hover:glass-panel-hover transition-all duration-300"
+                    className="w-10 h-10 rounded-lg glass-panel flex items-center justify-center hover:glass-panel-hover transition-all duration-300 group"
                   >
-                    <Icon size={20} weight="fill" />
+                    <Icon size={20} weight="fill" className="transition-colors" style={{ color: social.color }} />
                   </a>
                 )
               })}
