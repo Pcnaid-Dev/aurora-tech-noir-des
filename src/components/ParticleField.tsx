@@ -15,10 +15,8 @@ export function ParticleField() {
     let animationId: number
 
     const resize = () => {
-      const width = Math.max(window.innerWidth, document.documentElement.scrollWidth)
-      const height = Math.max(window.innerHeight, document.documentElement.scrollHeight)
-      canvas.width = width
-      canvas.height = height
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
     }
     resize()
     window.addEventListener('resize', resize)
@@ -83,8 +81,8 @@ export function ParticleField() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full pointer-events-none"
-      style={{ zIndex: 1, minWidth: '100vw' }}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 1 }}
     />
   )
 }
