@@ -6,9 +6,12 @@ import logoIcon from '@/assets/images/base_icon_transparent_background_(1).png'
 const navItems = [
   { id: 'hero', label: 'Home' },
   { id: 'solutions', label: 'Solutions' },
+  { id: 'industries', label: 'Industries' },
   { id: 'metrics', label: 'Impact' },
-  { id: 'testimonials', label: 'Testimonials' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'case-study', label: 'Case Studies' },
+  { id: 'testimonials', label: 'Resources' },
+  { id: 'faq', label: 'Company' },
+  { id: 'final-cta', label: 'Contact' },
 ]
 
 export function FloatingNav() {
@@ -84,11 +87,11 @@ export function FloatingNav() {
           </div>
 
           <Button
-            onClick={() => scrollToSection('faq')}
+            onClick={() => scrollToSection('final-cta')}
             size="sm"
             className="bg-gradient-to-r from-[var(--brand)] to-[var(--brand-600)] hover:shadow-[0_0_20px_var(--brand)] transition-all duration-300"
           >
-            Contact
+            Schedule a Consultation
           </Button>
         </div>
       </div>

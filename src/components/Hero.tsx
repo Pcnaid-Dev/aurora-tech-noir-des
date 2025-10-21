@@ -1,5 +1,5 @@
 import { Button } from './ui/button'
-import { Sparkle } from '@phosphor-icons/react'
+import { Sparkle, ShieldCheck } from '@phosphor-icons/react'
 
 export function Hero() {
   return (
@@ -14,18 +14,36 @@ export function Hero() {
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
           <span className="gradient-text gradient-text-shimmer inline-block">
-            Aurora Tech-Noir
+            Transforming Businesses
           </span>
           <br />
           <span className="text-white">
-            Innovation Delivered
+            with Cutting-Edge Technology
           </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-[var(--text-60)] mb-12 max-w-2xl mx-auto leading-relaxed">
-          Full-service technology solutions specializing in Payments & POS, Energy, Telecom, 
-          Web Marketing, Accounting, and Business Strategy. Experience the future of enterprise technology.
+        <p className="text-lg md:text-xl text-[var(--text-60)] mb-8 max-w-2xl mx-auto leading-relaxed">
+          Full-service technology solutions that reduce costs, increase uptime, and accelerate your digital transformation.
         </p>
+
+        <div className="flex items-center justify-center gap-4 mb-12 flex-wrap">
+          <div className="inline-flex items-center gap-2 glass-panel px-3 py-1.5 rounded-lg">
+            <ShieldCheck size={14} weight="fill" className="text-[var(--aurora-cyan)]" />
+            <span className="text-xs font-medium text-[var(--text-60)]">PCI DSS</span>
+          </div>
+          <div className="inline-flex items-center gap-2 glass-panel px-3 py-1.5 rounded-lg">
+            <ShieldCheck size={14} weight="fill" className="text-[var(--aurora-violet)]" />
+            <span className="text-xs font-medium text-[var(--text-60)]">SOC 2</span>
+          </div>
+          <div className="inline-flex items-center gap-2 glass-panel px-3 py-1.5 rounded-lg">
+            <ShieldCheck size={14} weight="fill" className="text-[var(--aurora-peach)]" />
+            <span className="text-xs font-medium text-[var(--text-60)]">ISO 27001</span>
+          </div>
+          <div className="inline-flex items-center gap-2 glass-panel px-3 py-1.5 rounded-lg">
+            <ShieldCheck size={14} weight="fill" className="text-[var(--neon-cyan)]" />
+            <span className="text-xs font-medium text-[var(--text-60)]">Gov-Ready</span>
+          </div>
+        </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
@@ -41,28 +59,10 @@ export function Hero() {
             size="lg"
             variant="outline"
             className="glass-panel hover:glass-panel-hover border-[var(--glass-border)]"
-            onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Get in Touch
           </Button>
-        </div>
-
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
-          {[
-            { value: '500+', label: 'Clients' },
-            { value: '99.9%', label: 'Uptime' },
-            { value: '24/7', label: 'Support' },
-            { value: '10+', label: 'Years' }
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm text-[var(--text-60)]">
-                {stat.label}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
