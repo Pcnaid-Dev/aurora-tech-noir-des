@@ -59,7 +59,7 @@ export function Solutions() {
 
     const interval = setInterval(() => {
       handleNext()
-    }, 5000)
+    }, 1000)
 
     return () => clearInterval(interval)
   }, [currentIndex, isPaused])
@@ -78,8 +78,14 @@ export function Solutions() {
     setTimeout(() => setIsAnimating(false), 500)
   }
 
-  const currentSolution = solutions[currentIndex]
-  const Icon = currentSolution.icon
+  const getVisibleSolutions = () => {
+    const visible: Array<typeof solutions[0] & { index: number }> = []
+    for (let i = 0; i < 3; i++) {
+      const index = (currentIndex + i) % solutions.length
+      visible.push({ ...solutions[index], index })
+    }
+    return visible
+  }
 
   return (
     <section 
@@ -99,12 +105,12 @@ export function Solutions() {
           </p>
         </div>
 
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative max-w-7xl mx-auto">
           <Button
             variant="ghost"
             size="icon"
             onClick={handlePrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-20 w-12 h-12 rounded-full glass-panel hover:glass-panel-hover"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 z-20 w-12 h-12 rounded-full glass-panel hover:glass-panel-hover"
             aria-label="Previous solution"
           >
             <CaretLeft size={24} weight="bold" />
@@ -114,47 +120,55 @@ export function Solutions() {
             variant="ghost"
             size="icon"
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-20 w-12 h-12 rounded-full glass-panel hover:glass-panel-hover"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 z-20 w-12 h-12 rounded-full glass-panel hover:glass-panel-hover"
             aria-label="Next solution"
           >
             <CaretRight size={24} weight="bold" />
           </Button>
 
-          <div 
-            className={`glass-panel glass-panel-hover rounded-2xl p-12 transition-all duration-500 ${
-              isAnimating ? 'opacity-70 scale-95' : 'opacity-100 scale-100'
-            }`}
-            style={{
-              boxShadow: `inset 0 1px 0 0 var(--glass-inner), 0 0 30px 0 ${currentSolution.color}33`
-            }}
-          >
-            <div className="text-center">
-              <div 
-                className="w-20 h-20 rounded-2xl flex items-center justify-center mb-8 mx-auto"
-                style={{
-                  background: `linear-gradient(135deg, ${currentSolution.color}20, ${currentSolution.color}10)`,
-                  boxShadow: `0 0 40px ${currentSolution.color}60`
-                }}
-              >
-                <Icon size={40} weight="duotone" style={{ color: currentSolution.color }} />
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {getVisibleSolutions().map((solution, displayIndex) => {
+              const Icon = solution.icon
+              return (
+                <div 
+                  key={solution.index}
+                  className={`glass-panel glass-panel-hover rounded-2xl p-8 transition-all duration-500 ${
+                    isAnimating ? 'opacity-70 scale-95' : 'opacity-100 scale-100'
+                  }`}
+                  style={{
+                    boxShadow: `inset 0 1px 0 0 var(--glass-inner), 0 0 30px 0 ${solution.color}33`
+                  }}
+                >
+                  <div className="text-center">
+                    <div 
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 mx-auto"
+                      style={{
+                        background: `linear-gradient(135deg, ${solution.color}20, ${solution.color}10)`,
+                        boxShadow: `0 0 40px ${solution.color}60`
+                      }}
+                    >
+                      <Icon size={32} weight="duotone" style={{ color: solution.color }} />
+                    </div>
 
-              <h3 className="text-3xl font-bold mb-4 text-white">
-                {currentSolution.title}
-              </h3>
+                    <h3 className="text-xl font-bold mb-3 text-white">
+                      {solution.title}
+                    </h3>
 
-              <p className="text-[var(--text-60)] leading-relaxed text-lg mb-8 max-w-2xl mx-auto">
-                {currentSolution.description}
-              </p>
+                    <p className="text-[var(--text-60)] leading-relaxed text-sm mb-6">
+                      {solution.description}
+                    </p>
 
-              <button 
-                className="text-sm font-medium flex items-center gap-2 group mx-auto"
-                style={{ color: currentSolution.color }}
-              >
-                Learn More
-                <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-              </button>
-            </div>
+                    <button 
+                      className="text-xs font-medium flex items-center gap-2 group mx-auto"
+                      style={{ color: solution.color }}
+                    >
+                      Learn More
+                      <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </button>
+                  </div>
+                </div>
+              )
+            })}
           </div>
 
           <div className="flex justify-center gap-2 mt-8">

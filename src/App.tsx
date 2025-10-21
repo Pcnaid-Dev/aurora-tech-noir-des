@@ -2,6 +2,7 @@ import { AuroraBackground } from './components/AuroraBackground'
 import { ParticleField } from './components/ParticleField'
 import { FloatingNav } from './components/FloatingNav'
 import { Hero } from './components/Hero'
+import { TrustedPartners } from './components/TrustedPartners'
 import { Solutions } from './components/Solutions'
 import { Metrics } from './components/Metrics'
 import { Testimonials } from './components/Testimonials'
@@ -18,6 +19,7 @@ function App() {
       <div className="relative z-10">
         <FloatingNav />
         <Hero />
+        <TrustedPartners />
         <Solutions />
         <Metrics />
         <Testimonials />
