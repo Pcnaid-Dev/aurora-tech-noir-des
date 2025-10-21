@@ -15,23 +15,26 @@ export function ParticleField() {
     let animationId: number
 
     const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      const width = Math.max(window.innerWidth, document.documentElement.scrollWidth)
+      const height = Math.max(window.innerHeight, document.documentElement.scrollHeight)
+      canvas.width = width
+      canvas.height = height
     }
     resize()
     window.addEventListener('resize', resize)
 
     const isMobile = window.innerWidth < 768
-    const particleCount = isMobile ? 30 : 80
+    const particleCount = isMobile ? 40 : 100
 
     const particles = Array.from({ length: particleCount }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
       size: Math.random() * 2 + 0.5,
       speedX: (Math.random() - 0.5) * 0.3,
       speedY: (Math.random() - 0.5) * 0.3,
       opacity: Math.random() * 0.5 + 0.3,
-      twinkleSpeed: Math.random() * 0.02 + 0.01
+      twinkleSpeed: Math.random() * 0.02 + 0.01,
+      twinkleOffset: Math.random() * Math.PI * 2
     }))
 
     let time = 0
@@ -49,8 +52,8 @@ export function ParticleField() {
           if (particle.y < 0) particle.y = canvas.height
           if (particle.y > canvas.height) particle.y = 0
 
-          time += particle.twinkleSpeed
-          particle.opacity = 0.3 + Math.sin(time) * 0.5
+          time += 0.01
+          particle.opacity = 0.3 + Math.sin(time * particle.twinkleSpeed + particle.twinkleOffset) * 0.4
         }
 
         ctx.beginPath()
@@ -58,8 +61,8 @@ export function ParticleField() {
         ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`
         ctx.fill()
         
-        ctx.shadowBlur = 8
-        ctx.shadowColor = 'rgba(96, 165, 250, 0.8)'
+        ctx.shadowBlur = 10
+        ctx.shadowColor = 'rgba(96, 165, 250, 0.9)'
         ctx.fill()
         ctx.shadowBlur = 0
       })
@@ -80,8 +83,8 @@ export function ParticleField() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 1 }}
+      className="fixed top-0 left-0 w-full pointer-events-none"
+      style={{ zIndex: 1, minWidth: '100vw' }}
     />
   )
 }
