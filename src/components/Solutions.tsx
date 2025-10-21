@@ -1,18 +1,18 @@
 import { 
-  CreditCard, 
   Lightning, 
-  Phone,
   ChartBar,
+  Strategy,
   Calculator,
-  Strategy
+  Phone
 } from '@phosphor-icons/react'
+import { Check } from '@phosphor-icons/react'
 
 const solutions = [
   {
-    icon: CreditCard,
+    icon: Lightning,
     title: 'Payments & POS',
-    description: 'Secure, scalable payment processing solutions with real-time transaction monitoring and multi-channel support.',
-    features: ['Real-time processing', 'Multi-channel support', 'Fraud detection', 'PCI compliance'],
+    description: 'Advanced payment processing and point-of-sale systems with real-time transaction monitoring and fraud detection.',
+    features: ['Real-time processing', 'Fraud detection', 'Multi-channel support', 'Compliance ready'],
     color: 'var(--aurora-violet)'
   },
   {
@@ -72,44 +72,48 @@ export function Solutions() {
             return (
               <div
                 key={index}
-                className="glass-panel glass-panel-hover rounded-2xl p-8 group cursor-pointer"
+                className="glass-panel glass-panel-hover rounded-2xl p-8 transition-all duration-300"
               >
                 <div 
-                  className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110"
-                  style={{
-                    background: `linear-gradient(135deg, ${solution.color}30, ${solution.color}10)`,
-                    boxShadow: `0 0 30px ${solution.color}40`
+                  className="w-14 h-14 rounded-xl mb-6 flex items-center justify-center"
+                  style={{ 
+                    background: `linear-gradient(135deg, ${solution.color}, ${solution.color}80)`,
+                    boxShadow: `0 0 20px ${solution.color}40`
                   }}
                 >
-                  <Icon size={32} weight="duotone" style={{ color: solution.color }} />
+                  <Icon size={28} weight="duotone" color="white" />
                 </div>
-
-                <h3 className="text-2xl font-bold text-white mb-4">
+                
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-100)]">
                   {solution.title}
                 </h3>
                 
                 <p className="text-[var(--text-60)] mb-6 leading-relaxed">
                   {solution.description}
                 </p>
-
+                
                 <ul className="space-y-3 mb-6">
                   {solution.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm">
-                      <div 
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{ backgroundColor: solution.color }}
+                    <li key={idx} className="flex items-start gap-2">
+                      <Check 
+                        size={20} 
+                        weight="bold" 
+                        className="text-[var(--neon-cyan)] mt-0.5 flex-shrink-0" 
                       />
-                      <span className="text-white/80">{feature}</span>
+                      <span className="text-[var(--text-100)] text-sm">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
-
+                
                 <button 
-                  className="text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all"
-                  style={{ color: solution.color }}
+                  className="w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-[var(--bg-800)] text-[var(--text-100)] hover:bg-[var(--brand)] hover:shadow-lg hover:shadow-[var(--brand)]30"
+                  onClick={() => {
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
                 >
                   Learn More
-                  <span className="transform transition-transform">→</span>
                 </button>
               </div>
             )
