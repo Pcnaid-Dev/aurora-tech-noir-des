@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Star, CaretLeft, CaretRight } from '@phosphor-icons/react'
 import { Button } from './ui/button'
 
@@ -82,6 +82,19 @@ export function Testimonials() {
     setTimeout(() => setIsAnimating(false), 500)
   }
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        handlePrevious()
+      } else if (event.key === 'ArrowRight') {
+        handleNext()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [currentIndex, isAnimating])
+
   const getVisibleTestimonials = () => {
     const visible: typeof testimonials = []
     for (let i = 0; i < visibleTestimonials; i++) {
@@ -103,25 +116,45 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative px-16 md:px-20">
           <Button
             variant="ghost"
             size="icon"
             onClick={handlePrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 rounded-full glass-panel hover:glass-panel-hover"
+            disabled={isAnimating}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full glass-panel transition-all duration-300 hover:scale-110 hover:shadow-[0_0_30px_0_var(--neon-cyan)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 group"
             aria-label="Previous testimonials"
+            style={{
+              background: 'var(--glass-base)',
+              backdropFilter: 'blur(14px)',
+              border: '1px solid var(--glass-border)',
+            }}
           >
-            <CaretLeft size={24} weight="bold" />
+            <CaretLeft 
+              size={28} 
+              weight="bold" 
+              className="text-[var(--text-100)] group-hover:text-[var(--neon-cyan)] transition-colors duration-300"
+            />
           </Button>
 
           <Button
             variant="ghost"
             size="icon"
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-12 h-12 rounded-full glass-panel hover:glass-panel-hover"
+            disabled={isAnimating}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full glass-panel transition-all duration-300 hover:scale-110 hover:shadow-[0_0_30px_0_var(--neon-cyan)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 group"
             aria-label="Next testimonials"
+            style={{
+              background: 'var(--glass-base)',
+              backdropFilter: 'blur(14px)',
+              border: '1px solid var(--glass-border)',
+            }}
           >
-            <CaretRight size={24} weight="bold" />
+            <CaretRight 
+              size={28} 
+              weight="bold" 
+              className="text-[var(--text-100)] group-hover:text-[var(--neon-cyan)] transition-colors duration-300"
+            />
           </Button>
 
           <div className="overflow-hidden">
