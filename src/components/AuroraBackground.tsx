@@ -23,10 +23,10 @@ export function AuroraBackground() {
     window.addEventListener('resize', resize)
 
     const colors = [
-      { r: 123, g: 97, b: 255, a: 0.15 },
-      { r: 255, g: 107, b: 205, a: 0.12 },
-      { r: 34, g: 211, b: 238, a: 0.1 },
-      { r: 255, g: 216, b: 115, a: 0.08 }
+      { r: 123, g: 97, b: 255, a: 0.04 },
+      { r: 255, g: 107, b: 205, a: 0.03 },
+      { r: 34, g: 211, b: 238, a: 0.03 },
+      { r: 255, g: 216, b: 115, a: 0.02 }
     ]
 
     const draw = () => {
@@ -52,8 +52,8 @@ export function AuroraBackground() {
 
         colors.forEach((color, i) => {
           const angle = time + i * Math.PI * 0.5
-          const x = canvas.width * 0.5 + Math.cos(angle) * canvas.width * 0.2
-          const y = canvas.height * 0.4 + Math.sin(angle * 0.7) * canvas.height * 0.15
+          const x = canvas.width * 0.5 + Math.cos(angle) * canvas.width * 0.35
+          const y = canvas.height * 0.5 + Math.sin(angle * 0.7) * canvas.height * 0.25
           
           const gradient = ctx.createRadialGradient(
             x,
@@ -61,9 +61,10 @@ export function AuroraBackground() {
             0,
             x,
             y,
-            canvas.width * 0.6
+            canvas.width * 0.8
           )
           gradient.addColorStop(0, `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`)
+          gradient.addColorStop(0.5, `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a * 0.3})`)
           gradient.addColorStop(1, 'rgba(0, 0, 0, 0)')
           ctx.fillStyle = gradient
           ctx.fillRect(0, 0, canvas.width, canvas.height)
