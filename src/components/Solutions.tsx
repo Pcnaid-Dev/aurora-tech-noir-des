@@ -10,11 +10,63 @@ import {
   CloudArrowUp,
   Database,
   Headset,
-  Briefcase
+  Briefcase,
+  Cpu,
+  Wrench,
+  ShieldCheck,
+  Cloud,
+  Code,
+  Robot
 } from '@phosphor-icons/react'
 import { Check } from '@phosphor-icons/react'
+import { SolutionsCarousel } from './SolutionsCarousel'
 
-const solutions = [
+const featuredSolutions = [
+  {
+    icon: Lightning,
+    title: 'Payments & POS',
+    description: 'Advanced payment processing and point-of-sale systems with real-time transaction monitoring.',
+    features: ['Real-time processing', 'Fraud detection', 'Multi-channel support'],
+    color: 'var(--aurora-violet)'
+  },
+  {
+    icon: Lightning,
+    title: 'Energy Solutions',
+    description: 'Smart energy management systems with real-time monitoring and optimization.',
+    features: ['Smart monitoring', 'Usage optimization', 'Cost reduction'],
+    color: 'var(--aurora-cyan)'
+  },
+  {
+    icon: Phone,
+    title: 'Telecom Services',
+    description: 'Enterprise telecommunications infrastructure with high-availability networks.',
+    features: ['High availability', 'Unified communications', 'Scalable infrastructure'],
+    color: 'var(--aurora-magenta)'
+  },
+  {
+    icon: ChartBar,
+    title: 'Web & Marketing',
+    description: 'Full-stack web development and digital marketing solutions that drive engagement.',
+    features: ['Full-stack development', 'SEO optimization', 'Analytics & insights'],
+    color: 'var(--aurora-peach)'
+  },
+  {
+    icon: Calculator,
+    title: 'Accounting & Taxes',
+    description: 'Automated financial management and tax compliance solutions with real-time reporting.',
+    features: ['Automated bookkeeping', 'Tax compliance', 'Real-time reporting'],
+    color: 'var(--neon-cyan)'
+  },
+  {
+    icon: Strategy,
+    title: 'Business Strategy',
+    description: 'Business strategy consulting and formation services to accelerate growth.',
+    features: ['Strategic planning', 'Business formation', 'Growth acceleration'],
+    color: 'var(--brand-300)'
+  }
+]
+
+const allSolutions = [
   {
     icon: Lightning,
     title: 'Payments & POS',
@@ -98,6 +150,48 @@ const solutions = [
     description: '24/7 IT operations management with proactive monitoring and maintenance.',
     features: ['24/7 monitoring', 'Proactive support', 'System optimization'],
     color: 'var(--brand-300)'
+  },
+  {
+    icon: Cpu,
+    title: 'IoT Solutions',
+    description: 'Connected device ecosystems with real-time monitoring and automation.',
+    features: ['Device management', 'Real-time analytics', 'Edge computing'],
+    color: 'var(--aurora-violet)'
+  },
+  {
+    icon: Wrench,
+    title: 'DevOps Services',
+    description: 'CI/CD pipeline automation and infrastructure as code implementation.',
+    features: ['Pipeline automation', 'Container orchestration', 'Infrastructure as code'],
+    color: 'var(--aurora-cyan)'
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Compliance Management',
+    description: 'Regulatory compliance and audit preparation services for multiple frameworks.',
+    features: ['Audit preparation', 'Policy management', 'Continuous monitoring'],
+    color: 'var(--aurora-magenta)'
+  },
+  {
+    icon: Cloud,
+    title: 'Disaster Recovery',
+    description: 'Business continuity planning and disaster recovery solutions with RTO guarantees.',
+    features: ['Backup automation', 'Failover systems', 'Recovery testing'],
+    color: 'var(--aurora-peach)'
+  },
+  {
+    icon: Code,
+    title: 'Custom Development',
+    description: 'Bespoke software development for unique business requirements.',
+    features: ['Custom applications', 'API development', 'Legacy modernization'],
+    color: 'var(--neon-cyan)'
+  },
+  {
+    icon: Robot,
+    title: 'AI & Automation',
+    description: 'Machine learning solutions and intelligent process automation.',
+    features: ['ML model development', 'Process automation', 'Intelligent workflows'],
+    color: 'var(--brand-300)'
   }
 ]
 
@@ -107,7 +201,7 @@ export function Solutions() {
       <div className="relative z-10 container mx-auto max-w-[1600px]">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Comprehensive Solutions</span>
+            <span className="gradient-text">Featured Solutions</span>
           </h2>
           <p className="text-lg text-[var(--text-60)] max-w-2xl mx-auto">
             Enterprise-grade technology services designed to transform your business operations 
@@ -115,8 +209,8 @@ export function Solutions() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {solutions.map((solution, index) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-24">
+          {featuredSolutions.map((solution, index) => {
             const Icon = solution.icon
             return (
               <div
@@ -172,6 +266,17 @@ export function Solutions() {
             )
           })}
         </div>
+
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">
+            <span className="gradient-text">All Solutions</span>
+          </h2>
+          <p className="text-base text-[var(--text-60)] max-w-xl mx-auto">
+            Explore our complete range of technology solutions and services
+          </p>
+        </div>
+
+        <SolutionsCarousel solutions={allSolutions} />
       </div>
     </section>
   )
