@@ -4,7 +4,10 @@ import {
   Lightning, 
   Phone, 
   Bank, 
-  Rocket 
+  Rocket,
+  Factory,
+  FirstAid,
+  GraduationCap
 } from '@phosphor-icons/react'
 
 const industries = [
@@ -43,6 +46,24 @@ const industries = [
     title: 'SMB & Startups',
     description: 'Scalable technology foundations for growing businesses',
     color: 'var(--neon-cyan)'
+  },
+  {
+    icon: Factory,
+    title: 'Manufacturing',
+    description: 'Industrial IoT and production management systems',
+    color: 'var(--aurora-violet)'
+  },
+  {
+    icon: FirstAid,
+    title: 'Healthcare',
+    description: 'HIPAA-compliant patient management and telemedicine platforms',
+    color: 'var(--aurora-cyan)'
+  },
+  {
+    icon: GraduationCap,
+    title: 'Education',
+    description: 'Learning management and institutional technology solutions',
+    color: 'var(--aurora-peach)'
   }
 ]
 

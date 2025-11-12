@@ -66,7 +66,7 @@ export function Process() {
                       <Icon size={24} weight="duotone" style={{ color: step.color }} />
                     </div>
                     <div 
-                      className="text-4xl font-bold opacity-20"
+                      className="text-4xl font-bold opacity-80"
                       style={{ color: step.color }}
                     >
                       {step.number}

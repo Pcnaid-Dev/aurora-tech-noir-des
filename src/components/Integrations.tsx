@@ -12,7 +12,11 @@ const platforms = [
   { name: 'Shopify', category: 'E-commerce' },
   { name: 'Stripe', category: 'Payments' },
   { name: 'QuickBooks', category: 'Accounting' },
-  { name: 'Xero', category: 'Accounting' }
+  { name: 'Xero', category: 'Accounting' },
+  { name: 'GitHub', category: 'DevOps' },
+  { name: 'Docker', category: 'DevOps' },
+  { name: 'Kubernetes', category: 'Infrastructure' },
+  { name: 'Terraform', category: 'Infrastructure' }
 ]
 
 export function Integrations() {

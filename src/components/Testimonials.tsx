@@ -159,7 +159,7 @@ export function Testimonials() {
 
           <div className="overflow-hidden">
             <div 
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 transition-transform duration-500 ease-in-out"
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(0)` }}
             >
               {getVisibleTestimonials().map((testimonial, index) => (
