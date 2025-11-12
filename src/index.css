@@ -151,10 +151,10 @@
 
 .gradient-text {
   background: linear-gradient(
-    135deg,
-    var(--aurora-violet),
+    90deg,
+    var(--aurora-peach),
     var(--aurora-magenta),
-    var(--aurora-peach)
+    var(--aurora-violet)
   );
   background-clip: text;
   -webkit-background-clip: text;
