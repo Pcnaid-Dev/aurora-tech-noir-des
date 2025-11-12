@@ -1,35 +1,23 @@
 import { CloudArrowUp } from '@phosphor-icons/react'
 
-  { name: 'Microsof
+const platforms = [
+  { name: 'Microsoft', category: 'Enterprise' },
   { name: 'Google Cloud', category: 'Cloud' },
   { name: 'Oracle', category: 'Enterprise' },
-  { name: 'Clover', category: 'Paymen
-  { name: 'Stripe', category: 'Payments' },
-  { name: 'Xero', category: 'Accounting' }
-  { name: 'Oracle', category: 'Enterprise' },
-  { name: 'Matrix/Beeper', category: 'Communications' },
   { name: 'Clover', category: 'Payments' },
-  { name: 'Shopify', category: 'E-commerce' },
   { name: 'Stripe', category: 'Payments' },
-  { name: 'QuickBooks', category: 'Accounting' },
   { name: 'Xero', category: 'Accounting' },
+  { name: 'Matrix/Beeper', category: 'Communications' },
+  { name: 'Shopify', category: 'E-commerce' },
+  { name: 'QuickBooks', category: 'Accounting' },
   { name: 'GitHub', category: 'DevOps' },
-          <h2 className="text-3xl md:text
-          </h2>
-            Connect with the tools and platforms yo
- 
+]
 
-            <div 
-          
-              <div className="font-semibold text-white mb-1 tex
-              </div>
-                {platform.category}
-            </div>
-        </div>
-        <div className="mt-12 text-center">
-            + Many more enterprise
-        </div>
-    </section>
+export function Integrations() {
+  return (
+    <section id="integrations" className="relative py-32 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             <span className="gradient-text">Platforms & Integrations</span>
           </h2>
@@ -62,4 +50,4 @@ import { CloudArrowUp } from '@phosphor-icons/react'
       </div>
     </section>
   )
-
+}
