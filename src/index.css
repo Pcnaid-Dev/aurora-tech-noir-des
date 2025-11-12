@@ -152,9 +152,9 @@
 .gradient-text {
   background: linear-gradient(
     90deg,
-    var(--aurora-peach) 0%,
-    var(--aurora-magenta) 50%,
-    var(--aurora-violet) 100%
+    var(--aurora-peach),
+    var(--aurora-magenta),
+    var(--aurora-violet)
   );
   background-clip: text;
   -webkit-background-clip: text;
