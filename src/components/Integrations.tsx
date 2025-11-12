@@ -1,11 +1,11 @@
 import { CloudArrowUp } from '@phosphor-icons/react'
 
-const platforms = [
-  { name: 'Cloudflare', category: 'Infrastructure' },
-  { name: 'Microsoft Azure', category: 'Cloud' },
-  { name: 'AWS', category: 'Cloud' },
+  { name: 'Microsof
   { name: 'Google Cloud', category: 'Cloud' },
-  { name: 'Salesforce', category: 'CRM' },
+  { name: 'Oracle', category: 'Enterprise' },
+  { name: 'Clover', category: 'Paymen
+  { name: 'Stripe', category: 'Payments' },
+  { name: 'Xero', category: 'Accounting' }
   { name: 'Oracle', category: 'Enterprise' },
   { name: 'Matrix/Beeper', category: 'Communications' },
   { name: 'Clover', category: 'Payments' },
@@ -14,22 +14,22 @@ const platforms = [
   { name: 'QuickBooks', category: 'Accounting' },
   { name: 'Xero', category: 'Accounting' },
   { name: 'GitHub', category: 'DevOps' },
-  { name: 'Docker', category: 'DevOps' },
-  { name: 'Kubernetes', category: 'Infrastructure' },
-  { name: 'Terraform', category: 'Infrastructure' }
-]
+          <h2 className="text-3xl md:text
+          </h2>
+            Connect with the tools and platforms yo
+ 
 
-export function Integrations() {
-  return (
-    <section id="integrations" className="relative py-24 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 glass-panel px-4 py-2 rounded-full mb-6">
-            <CloudArrowUp size={16} weight="fill" className="text-[var(--aurora-cyan)]" />
-            <span className="text-sm font-medium text-[var(--text-60)]">
-              Seamless Integration
-            </span>
-          </div>
+            <div 
+          
+              <div className="font-semibold text-white mb-1 tex
+              </div>
+                {platform.category}
+            </div>
+        </div>
+        <div className="mt-12 text-center">
+            + Many more enterprise
+        </div>
+    </section>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             <span className="gradient-text">Platforms & Integrations</span>
           </h2>
@@ -62,4 +62,4 @@ export function Integrations() {
       </div>
     </section>
   )
-}
+
