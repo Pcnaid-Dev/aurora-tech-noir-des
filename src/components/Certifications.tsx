@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { Section } from './Section'
 import { Badge } from './ui/badge'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
 import { CheckCircle, Shield, Medal, Certificate, Globe, Lock } from '@phosphor-icons/react'
+import { CertificationModal } from './CertificationModal'
 
 interface CertBadge {
   id: string
@@ -167,64 +169,88 @@ const certifications: CertBadge[] = [
 ]
 
 export function Certifications() {
-  return (
-    <Section fullBleed contentAlign="center">
-      <div className="full-bleed-grid">
-        <div className="grid-content">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text gradient-text-shimmer">
-              Certifications & Industry Badges
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Trusted credentials and compliance certifications ensuring enterprise-grade security, 
-              privacy, and operational excellence across all our services.
-            </p>
-          </div>
+  const [selectedCert, setSelectedCert] = useState<CertBadge | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-          <TooltipProvider delayDuration={200}>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
-              {certifications.map((cert, index) => (
-                <Tooltip key={cert.id}>
-                  <TooltipTrigger asChild>
-                    <div
-                      className="cert-badge group"
-                      style={{
-                        animationDelay: `${index * 50}ms`
-                      }}
-                    >
-                      <div className="cert-badge-inner">
-                        <div className="cert-icon">
-                          {cert.icon}
-                        </div>
-                        <div className="cert-name">
-                          {cert.name}
-                        </div>
-                        {cert.type === 'color' && cert.colorScheme && (
-                          <div 
-                            className="cert-accent"
-                            style={{
-                              background: `linear-gradient(135deg, ${cert.colorScheme.bg}, ${cert.colorScheme.border})`,
-                            }}
-                          />
-                        )}
-                        <div className="light-sweep" />
-                      </div>
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent 
-                    side="top" 
-                    className="max-w-xs glass-panel border-border/50"
-                    sideOffset={8}
-                  >
-                    <p className="text-sm font-medium mb-1">{cert.name}</p>
-                    <p className="text-xs text-muted-foreground">{cert.description}</p>
-                  </TooltipContent>
-                </Tooltip>
-              ))}
+  const handleBadgeClick = (cert: CertBadge) => {
+    setSelectedCert(cert)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setTimeout(() => setSelectedCert(null), 200)
+  }
+
+  return (
+    <>
+      <Section fullBleed contentAlign="center">
+        <div className="full-bleed-grid">
+          <div className="grid-content">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text gradient-text-shimmer">
+                Certifications & Industry Badges
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Trusted credentials and compliance certifications ensuring enterprise-grade security, 
+                privacy, and operational excellence across all our services.
+              </p>
             </div>
-          </TooltipProvider>
+
+            <TooltipProvider delayDuration={200}>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+                {certifications.map((cert, index) => (
+                  <Tooltip key={cert.id}>
+                    <TooltipTrigger asChild>
+                      <button
+                        onClick={() => handleBadgeClick(cert)}
+                        className="cert-badge group cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                        style={{
+                          animationDelay: `${index * 50}ms`
+                        }}
+                        aria-label={`View ${cert.name} certification details`}
+                      >
+                        <div className="cert-badge-inner">
+                          <div className="cert-icon">
+                            {cert.icon}
+                          </div>
+                          <div className="cert-name">
+                            {cert.name}
+                          </div>
+                          {cert.type === 'color' && cert.colorScheme && (
+                            <div 
+                              className="cert-accent"
+                              style={{
+                                background: `linear-gradient(135deg, ${cert.colorScheme.bg}, ${cert.colorScheme.border})`,
+                              }}
+                            />
+                          )}
+                          <div className="light-sweep" />
+                        </div>
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent 
+                      side="top" 
+                      className="max-w-xs glass-panel border-border/50"
+                      sideOffset={8}
+                    >
+                      <p className="text-sm font-medium mb-1">{cert.name}</p>
+                      <p className="text-xs text-muted-foreground">{cert.description}</p>
+                      <p className="text-xs text-accent mt-2">Click to view verification details</p>
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
+            </TooltipProvider>
+          </div>
         </div>
-      </div>
-    </Section>
+      </Section>
+
+      <CertificationModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        certification={selectedCert}
+      />
+    </>
   )
 }
