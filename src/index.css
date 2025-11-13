@@ -187,6 +187,31 @@
   }
 }
 
+@keyframes cert-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cert-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
 .gradient-text {
   background: linear-gradient(
     90deg,
@@ -242,4 +267,99 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+.cert-badge {
+  position: relative;
+  animation: cert-fade-in 0.6s ease-out forwards;
+  animation-fill-mode: both;
+  opacity: 0;
+}
+
+.cert-badge-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem 1.5rem;
+  min-height: 140px;
+  background: var(--glass-base);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 
+    inset 0 1px 0 0 var(--glass-inner),
+    0 0 20px 0 oklch(0.55 0.25 290 / 0.1);
+}
+
+.cert-badge:hover .cert-badge-inner {
+  border-color: var(--neon-cyan);
+  box-shadow: 
+    inset 0 1px 0 0 var(--glass-inner),
+    0 0 30px 0 var(--neon-cyan),
+    0 0 60px 0 oklch(0.55 0.25 290 / 0.15);
+  transform: translateY(-4px);
+}
+
+.cert-icon {
+  font-size: 2rem;
+  color: var(--neon-cyan);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.cert-badge:hover .cert-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px var(--neon-cyan));
+}
+
+.cert-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-100);
+  line-height: 1.3;
+  z-index: 2;
+}
+
+.cert-accent {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: soft-light;
+  z-index: 1;
+}
+
+.cert-badge:hover .cert-accent {
+  opacity: 0.15;
+}
+
+.light-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(0.98 0 0 / 0.2) 50%,
+    transparent 100%
+  );
+  transform: translateX(-120%) skewX(-20deg);
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.cert-badge:hover .light-sweep {
+  animation: cert-sweep 1.2s ease-in-out;
 }

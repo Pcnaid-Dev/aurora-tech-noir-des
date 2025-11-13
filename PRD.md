@@ -61,6 +61,13 @@ A visually breathtaking, immersive Aurora Tech-Noir showcase for Pcnaid - a full
 - **Progression**: User scrolls → Security categories display → Compliance badges visible → Trust Center CTA available
 - **Success criteria**: Key compliance standards prominent, comprehensive coverage, link to deeper technical details
 
+### Certifications & Industry Badges
+- **Functionality**: Grid of 16 certification badges with icon, name, tooltip descriptions, and light-sweep hover animation. Supports both color badges (with brand gradients) and monochrome badges (with automatic contrast)
+- **Purpose**: Build immediate credibility through visual display of security certifications, compliance standards, and technology partnerships
+- **Trigger**: Scroll into viewport
+- **Progression**: User scrolls → Badges fade in with stagger → Hover over badge → Tooltip shows detailed description + light-sweep animation activates → Color badges show brand accent
+- **Success criteria**: All 16 badges visible in responsive grid (2 cols mobile, 4 cols desktop), tooltips accessible and informative, animations smooth at 60fps, high contrast maintained for both monochrome and color variants
+
 ### Integrations & Platforms
 - **Functionality**: Grid of 12+ integration logos/names organized by category
 - **Purpose**: Show ecosystem compatibility and reduce integration concerns

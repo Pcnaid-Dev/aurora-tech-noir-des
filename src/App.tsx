@@ -10,6 +10,7 @@ import { Metrics } from './components/Metrics'
 import { CaseStudy } from './components/CaseStudy'
 import { Process } from './components/Process'
 import { Security } from './components/Security'
+import { Certifications } from './components/Certifications'
 import { Integrations } from './components/Integrations'
 import { Pricing } from './components/Pricing'
 import { Testimonials } from './components/Testimonials'
@@ -35,6 +36,7 @@ function App() {
         <CaseStudy />
         <Process />
         <Security />
+        <Certifications />
         <Integrations />
         <Pricing />
         <Testimonials />
