@@ -9,6 +9,35 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .full-bleed-grid {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(1rem, 1fr)
+      [content-start] repeat(12, minmax(0, 5rem))
+      [content-end] minmax(1rem, 1fr)
+      [full-end];
+    column-gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .full-bleed-grid {
+      grid-template-columns:
+        [full-start] minmax(2rem, 1fr)
+        [content-start] repeat(12, minmax(0, 6rem))
+        [content-end] minmax(2rem, 1fr)
+        [full-end];
+      column-gap: 2rem;
+    }
+  }
+
+  .grid-content {
+    grid-column: content-start / content-end;
+  }
+
+  .grid-full {
+    grid-column: full-start / full-end;
+  }
 }
 
 :root {

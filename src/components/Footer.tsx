@@ -51,8 +51,10 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative py-20 px-4 border-t border-[var(--glass-border)]">
-      <div className="relative z-10 container mx-auto max-w-7xl">
+    <footer className="relative full-bleed-grid py-20 border-t border-[var(--glass-border)]">
+      <div className="grid-full absolute inset-0 bg-[var(--bg-950)]"></div>
+      
+      <div className="relative z-10 grid-content">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">

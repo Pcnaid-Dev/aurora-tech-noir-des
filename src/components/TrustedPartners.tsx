@@ -1,4 +1,5 @@
 import { TrustedMarquee } from './TrustedMarquee'
+import { Section } from './Section'
 
 const partners = [
   { name: 'Stripe', logo: 'ST' },
@@ -14,19 +15,17 @@ const partners = [
 
 export function TrustedPartners() {
   return (
-    <section className="relative py-20 px-4">
-      <div className="relative z-10 container mx-auto max-w-7xl">
-        <div className="text-center mb-10">
-          <h3 className="text-2xl md:text-3xl font-bold mb-3">
-            <span className="gradient-text">Trusted by leading organizations</span>
-          </h3>
-          <p className="text-[var(--text-60)]">
-            Collaborating with industry leaders to deliver excellence
-          </p>
-        </div>
-
-        <TrustedMarquee partners={partners} />
+    <Section fullBleed contentAlign="center" className="bg-[var(--bg-900)]">
+      <div className="text-center mb-10">
+        <h3 className="text-2xl md:text-3xl font-bold mb-3">
+          <span className="gradient-text">Trusted by leading organizations</span>
+        </h3>
+        <p className="text-[var(--text-60)]">
+          Collaborating with industry leaders to deliver excellence
+        </p>
       </div>
-    </section>
+
+      <TrustedMarquee partners={partners} />
+    </Section>
   )
 }

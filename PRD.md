@@ -199,3 +199,50 @@ Animations should feel like living energy flowing through the interface - purpos
   - Font sizes scale down using clamp() functions
   - All interactions remain touch-friendly with 44px minimum tap targets
   - Glass blur effect reduces from 14px to 8px on mobile for performance
+
+## Layout Architecture
+
+### Full-Bleed Grid System
+The application uses a full-bleed grid system to create dynamic layouts with proper content containment while allowing certain elements to extend to the viewport edges.
+
+**Grid Structure:**
+```
+[full-start] gutter [content-start] 12 columns [content-end] gutter [full-end]
+```
+
+- **Gutters**: 1rem on mobile, 2rem on desktop (responsive)
+- **Content columns**: 12 columns, each 5rem on mobile / 6rem on desktop
+- **Column gap**: 1.5rem on mobile, 2rem on desktop
+
+**CSS Classes:**
+- `.full-bleed-grid` - Applied to sections to establish the grid
+- `.grid-content` - Content spans within content columns
+- `.grid-full` - Content spans full viewport width
+
+### Section Component
+The standardized `Section` component provides:
+- **Vertical rhythm**: `py-24 md:py-32` (consistent spacing)
+- **Content alignment**: `left | center | right` 
+- **Full-bleed support**: Backgrounds can extend to viewport edges
+- **Flexible layouts**: Mix of centered and left-aligned content
+
+**Props:**
+- `fullBleed?: boolean` - Background extends to full width
+- `contentAlign?: 'left' | 'center' | 'right'` - Content positioning
+- `noPadding?: boolean` - Remove default vertical padding
+- `className?: string` - Additional styles
+
+### Layout Patterns
+
+**Center-aligned sections** (default):
+- Hero
+- Problem/Outcome
+- Metrics
+- FAQ
+
+**Full-bleed backgrounds**:
+- TrustedPartners (background band)
+- Footer (background extends, content contained)
+
+**Staggered layouts**:
+Not all sections center-aligned to create visual rhythm and prevent monotony. Full-bleed allows imagery and colored bands to break out while maintaining readable line lengths for content.

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatedCounter } from './AnimatedCounter'
+import { Section } from './Section'
 
 const metrics = [
   {
@@ -52,8 +53,8 @@ export function Metrics() {
   }, [isVisible])
 
   return (
-    <section id="metrics" ref={sectionRef} className="relative py-32 px-4">
-      <div className="relative z-10 container mx-auto max-w-7xl">
+    <Section id="metrics" contentAlign="center">
+      <div ref={sectionRef}>
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="gradient-text">Measurable Impact</span>
@@ -118,6 +119,6 @@ export function Metrics() {
           </button>
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

@@ -1,10 +1,11 @@
 import { Button } from './ui/button'
 import { Sparkle, ShieldCheck } from '@phosphor-icons/react'
+import { Section } from './Section'
 
 export function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-4">
-      <div className="relative z-10 text-center max-w-5xl mx-auto pt-20">
+    <Section id="hero" noPadding contentAlign="center" className="relative min-h-screen flex items-center">
+      <div className="relative z-10 text-center pt-20 w-full">
         <div className="inline-flex items-center gap-2 glass-panel px-4 py-2 rounded-full mb-8">
           <Sparkle size={16} weight="fill" className="text-[var(--aurora-cyan)]" />
           <span className="text-sm font-medium text-[var(--text-60)]">
@@ -65,6 +66,6 @@ export function Hero() {
           </Button>
         </div>
       </div>
-    </section>
+    </Section>
   )
 }
