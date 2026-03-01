@@ -64,8 +64,8 @@ export function FooterWide() {
           <div>
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-accent transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Terms of Service</a></li>
+              <li><a href="https://policies.pcnaid.com/privacy" className="hover:text-accent transition-colors">Privacy Policy</a></li>
+              <li><a href="https://policies.pcnaid.com/terms" className="hover:text-accent transition-colors">Terms of Service</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Security</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Compliance</a></li>
             </ul>
@@ -78,8 +78,8 @@ export function FooterWide() {
               © 2024 Pcnaid. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-accent transition-colors">Privacy</a>
-              <a href="#" className="hover:text-accent transition-colors">Terms</a>
+              <a href="https://policies.pcnaid.com/privacy" className="hover:text-accent transition-colors">Privacy</a>
+              <a href="https://policies.pcnaid.com/terms" className="hover:text-accent transition-colors">Terms</a>
               <a href="#" className="hover:text-accent transition-colors">Cookies</a>
             </div>
           </div>
