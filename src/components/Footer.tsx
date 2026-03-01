@@ -32,11 +32,11 @@ const footerLinks = {
     'Support'
   ],
   legal: [
-    'Privacy Policy',
-    'Terms of Service',
-    'Cookie Policy',
-    'Security',
-    'Compliance'
+    { label: 'Privacy Policy', href: 'https://policies.pcnaid.com/privacy' },
+    { label: 'Terms of Service', href: 'https://policies.pcnaid.com/terms' },
+    { label: 'Cookie Policy', href: '#' },
+    { label: 'Security', href: '#' },
+    { label: 'Compliance', href: '#' }
   ]
 }
 
@@ -125,8 +125,8 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <a href="#" className="text-sm text-[var(--text-60)] hover:text-[var(--neon-cyan)] transition-colors">
-                    {link}
+                  <a href={link.href} className="text-sm text-[var(--text-60)] hover:text-[var(--neon-cyan)] transition-colors">
+                    {link.label}
                   </a>
                 </li>
               ))}
