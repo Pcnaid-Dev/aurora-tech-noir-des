@@ -139,10 +139,10 @@ export function Footer() {
             © {new Date().getFullYear()} Pcnaid. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-[var(--text-60)]">
-            <a href="#" className="hover:text-[var(--neon-cyan)] transition-colors">
+            <a href="https://policies.pcnaid.com/privacy" className="hover:text-[var(--neon-cyan)] transition-colors">
               Privacy
             </a>
-            <a href="#" className="hover:text-[var(--neon-cyan)] transition-colors">
+            <a href="https://policies.pcnaid.com/terms" className="hover:text-[var(--neon-cyan)] transition-colors">
               Terms
             </a>
             <a href="#" className="hover:text-[var(--neon-cyan)] transition-colors">
